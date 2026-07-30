@@ -39,7 +39,7 @@ if (setTimeout.toString() !== 'function setTimeout() { [native code] }') {
     DbgException()
 }
 if (typeof global.gc === 'function') DbgException()`
-return (sourceCode) => {
+return (async (sourceCode) => {
     let {code: virtualized} = await jsConfVM.obfuscate(AntiTamper + '\n' + sourceCode, {
           target: "node",
           randomizeOpcodes: true,
@@ -87,4 +87,4 @@ return (sourceCode) => {
       renameVariables: true,
     })
     return obfuscated;
-  }
+  })
